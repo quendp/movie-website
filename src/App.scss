@@ -3,6 +3,7 @@
 }
 
 .grid-container {
+  margin-bottom: 5rem;
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
@@ -16,9 +17,9 @@
   padding: 1rem;
 }
 
-.grid-item:nth-child(1) {
-  grid-row: span 2;
-}
+// .grid-item:nth-child(1) {
+//   grid-row: span 2;
+// }
 
 .app img {
   width: 100%;

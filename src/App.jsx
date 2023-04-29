@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>Movie list using &#x2022; Grid layout</h1>
+      <h1>Movie list using Grid layout</h1>
       <div className="grid-container">
         {moviesList && moviesList.length > 0 ? (
           moviesList.map((movie) => (
@@ -47,6 +47,17 @@ const App = () => {
           <p>{fetchStatusMessage}</p>
         )}
         {!moviesList && <p>Oops</p>}
+      </div>
+      <div>
+        <p style={{ textAlign: "center", fontSize: "10px" }}>
+          <img
+            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+            alt="TMDB logo"
+            style={{ width: "50px", marginRight: "15px" }}
+          />
+          This product uses the TMDB API but is not endorsed or certified by
+          TMDB
+        </p>
       </div>
     </div>
   );
