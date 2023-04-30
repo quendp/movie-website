@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.scss";
 import apiConfig from "./api/apiConfig";
 import fetchMovies from "./utils/fetchMovies";
 import Card from "./components/Card";
@@ -41,6 +40,7 @@ const App = () => {
               key={movie.id}
               image={movie.backdrop_path}
               title={movie.title}
+              overview={movie.overview}
             />
           ))
         ) : (

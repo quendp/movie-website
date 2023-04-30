@@ -1,0 +1,41 @@
+@use "../mixins" as mixins;
+@use "../variables" as variables;
+
+.grid-item {
+  text-align: center;
+  border-radius: 1rem;
+  background-color: variables.$cardBg;
+  padding: 1rem;
+  transition: background-color 200ms ease-in-out;
+
+  &:hover {
+    background-color: #192937;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 1rem;
+  }
+
+  div {
+    @include mixins.flex(end, center);
+    gap: 1rem;
+    border-top: 1px solid #314a60;
+    padding-top: 1rem;
+  }
+
+  .overview {
+    font-size: 0.8rem;
+    text-align: left;
+    padding: 0 0.3rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    span {
+      display: block;
+    }
+  }
+}
