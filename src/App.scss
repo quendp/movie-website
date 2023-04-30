@@ -67,6 +67,13 @@ button {
   }
 }
 
+.header-menu {
+  @include flex(center, center);
+
+  list-style: none;
+  gap: 2rem;
+}
+
 // .grid-item:nth-child(1) {
 //   grid-row: span 2;
 // }
