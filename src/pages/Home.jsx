@@ -4,24 +4,25 @@ import fetchMovies from "../utils/fetchMovies";
 import Card from "../components/Card";
 
 const Home = () => {
-  const [moviesList, setMoviesList] = useState();
-  const [fetchStatusMessage, setFetchStatusMessage] = useState("");
+  const [moviesList, setMoviesList] = useState([]);
+  const [fetchStatus, setFetchStatus] = useState("");
 
   useEffect(() => {
+    setFetchStatus("Fetch Loading...");
     const api = `${apiConfig.baseUrl}/movie/popular?api_key=${apiConfig.apiKey}&page=1`;
     const controller = new AbortController();
     (async () => {
-      const fetchedMovies = await fetchMovies(
-        api,
-        controller,
-        setFetchStatusMessage
-      );
-      console.log(fetchedMovies);
+      const moviesData = await fetchMovies(api, controller);
+      const moviesResults = moviesData?.results;
+      console.log(moviesResults);
 
-      setMoviesList(fetchedMovies?.results);
-
-      if (fetchedMovies?.results.length === 0) {
-        setFetchStatusMessage("No movies found.");
+      if (!moviesResults) {
+        setFetchStatus("An error occurred.");
+      } else if (moviesResults.length === 0) {
+        setFetchStatus("No movies found.");
+      } else {
+        setFetchStatus("");
+        setMoviesList(moviesResults);
       }
     })();
 
@@ -33,7 +34,7 @@ const Home = () => {
     <div className="app">
       <h1>Movie list TMDB API</h1>
       <div className="grid-container">
-        {moviesList && moviesList.length > 0 ? (
+        {!fetchStatus && moviesList ? (
           moviesList.map((movie) => (
             <Card
               key={movie.id}
@@ -43,7 +44,7 @@ const Home = () => {
             />
           ))
         ) : (
-          <p>{fetchStatusMessage}</p>
+          <p style={{ textAlign: "center" }}>{fetchStatus}</p>
         )}
       </div>
       <div>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import apiConfig from "../api/apiConfig";
+import PropTypes from "prop-types";
 
 const Card = ({ title, image, overview }) => {
   const ref = useRef();
@@ -46,6 +47,12 @@ const Card = ({ title, image, overview }) => {
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string,
+  overview: PropTypes.string,
 };
 
 export default Card;

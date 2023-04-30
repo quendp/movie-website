@@ -1,5 +1,4 @@
-const fetchMovies = async (api, controller, setStatusMessage) => {
-  setStatusMessage("Loading...");
+const fetchMovies = async (api, controller) => {
   try {
     const response = await fetch(api, {
       headers: {
@@ -8,11 +7,9 @@ const fetchMovies = async (api, controller, setStatusMessage) => {
       signal: controller.signal,
     });
     const data = response.json();
-    setStatusMessage("");
     return data;
   } catch (error) {
     console.log(error);
-    setStatusMessage("An error occured. Try again later.");
   }
 };
 
